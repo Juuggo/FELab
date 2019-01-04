@@ -1,0 +1,305 @@
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+*{
+    margin:0;
+    padding:0;
+}
+.container{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#f7f0e5;
+}
+.container *,
+.container *::before,
+.container *::after{
+    display:block;
+    position:absolute;
+    content:"";
+    -webkit-transition:all .3s linear;
+    transition:all .3s linear;
+}
+.container input{
+    display:none;
+}
+.arrows{
+    display:block;
+    width:0px;
+    height:0px;
+    top:50%;
+    left:50%;
+}
+.arrow_down{
+    border-top:22px solid #b9c49f;
+    border-left:22px solid transparent;
+    border-right:22px solid transparent;
+    margin-top:140px;
+    margin-left:-22px;
+    cursor:pointer;
+}
+.arrow_left{
+    border-right:22px solid #b9c49f;
+    border-top:22px solid transparent;
+    border-bottom:22px solid transparent;
+    margin-left:-132px;
+}
+.arrow_right{
+    border-left:22px solid #b9c49f;
+    border-top:22px solid transparent;
+    border-bottom:22px solid transparent;
+    margin-left:110px;
+}
+.deer{
+    --head:#ff8a74;
+    --stomoch:#fee9c1;
+    --eye:#66635e;
+    width:170px;
+    height:250px;
+    top:50%;
+    left:50%;
+    margin:-125px -85px;
+}
+.deer label{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    margin:0;
+    cursor:pointer;
+    z-index:10;
+}
+.head{
+    top:21px;
+    left:50%;
+    z-index:1;
+}
+.head p:nth-child(4){
+    width:116px;
+    height:100px;
+    margin-left:-58px;
+    background:var(--head);
+    border-radius:50%;
+    -webkit-box-shadow:0 0 0px 1px var(--stomoch) inset;
+    box-shadow:0 0 0px 1px var(--stomoch) inset;
+}
+.head p:nth-child(4)::before{
+    width:138px;
+    height:78px;
+    background:var(--head);
+    border-radius:50%;
+    top:40px;
+    left:50%;
+    margin-left:-69px;
+}
+.head p:nth-child(5){
+    width:24px;
+    height:15px;
+    background:var(--stomoch);
+    border-radius:50%;
+    top:70px;
+    margin-left:-12px;
+}
+.head p:nth-child(5)::before{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--eye);
+    top:-10px;
+    left:50%;
+    margin-left:-45px;
+}
+.head p:nth-child(5)::after{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--eye);
+    top:-10px;
+    left:50%;
+    margin-left:33px;
+}
+.head p:nth-child(1){
+    width:50px;
+    height:26px;
+    border-radius:0 0 26px 26px;
+    top:32px;
+    margin-left:-83px;
+    background:var(--head);
+}
+.head p:nth-child(1)::before{
+    width:50px;
+    height:26px;
+    border-radius:0 0 26px 26px;
+    margin-left:116px;
+    background:var(--head);
+}
+.head p:nth-child(2){
+    width:10px;
+    height:45px;
+    border-radius:5px/20px 20px 0 0;
+    background:var(--eye);
+    top:-30px;
+    margin-left:-40px;
+    -webkit-transform:rotate(-20deg);
+    transform:rotate(-20deg);
+}
+.head p:nth-child(2)::before{
+    width:20px;
+    height:8px;
+    border-radius:10px 0 0 10px/4px;
+    background:var(--eye);
+    top:25px;
+    left:-15px;
+    -webkit-transform:rotate(20deg);
+    transform:rotate(20deg);
+}
+.head p:nth-child(3){
+    width:10px;
+    height:45px;
+    border-radius:5px/20px 20px 0 0;
+    background:var(--eye);
+    top:-30px;
+    margin-left:30px;
+    -webkit-transform:rotate(20deg);
+    transform:rotate(20deg);
+}
+.head p:nth-child(3)::before{
+    width:20px;
+    height:8px;
+    border-radius:0 10px 10px 0/4px;
+    background:var(--eye);
+    top:25px;
+    left:5px;
+    -webkit-transform:rotate(-20deg);
+    transform:rotate(-20deg);
+}
+.body{
+    top:120px;
+    left:50%;
+    transform:perspective(50px);
+}
+.body::before{
+    width:84px;
+    height:110px;
+    border-radius:50%;
+    margin-left:-42px;
+    background:var(--head);
+}
+.body .stomoch{
+    width:44px;
+    height:70px;
+    border-radius:50%;
+    margin-left:-22px;
+    top:20px;
+    background:var(--stomoch);
+    z-index:1;
+}
+.hands::before,
+.hands::after{
+    width:20px;
+    height:70px;
+    top:10px;
+    background:var(--head);
+    z-index:2;
+}
+.hands::before{
+    left:-35px;
+    border-radius:10px 10px 20px 10px;
+    transform-origin:top right;
+    -webkit-transform:rotate(20deg);
+    transform:rotate(20deg);
+}
+.hands::after{
+    left:15px;
+    border-radius:10px 10px 10px 20px;
+    transform-origin:top left;
+    -webkit-transform:rotate(-20deg);
+    transform:rotate(-20deg);
+}
+#walk:checked~.deer .body .hands::before{
+    transform:rotate(20deg) rotateX(0);
+    height:70px;
+    animation:hand_r 1s ease-in-out infinite;
+}
+#walk:checked~.deer .body .hands::after{
+    transform:rotate(-20deg) rotateX(0);
+    height:70px;
+    animation:hand_l 1s ease-in-out infinite;
+}
+@keyframes hand_r{
+    25%{
+        transform:rotate(30deg) rotateX(-30deg);
+        height:70px;
+    }50%{
+        transform:rotate(20deg) rotateX(0);
+        height:70px;
+    }75%{
+        transform:rotate(3deg) rotateX(30deg);
+        height:80px;
+    }
+}
+@keyframes hand_l{
+    25%{
+        transform:rotate(-3deg) rotateX(30deg);
+        height:80px;
+    }50%{
+        transform:rotate(-20deg) rotateX(0);
+        height:70px;
+    }75%{
+        transform:rotate(-30deg) rotateX(-30deg);
+        height:70px;
+    }
+}
+.foots::before,
+.foots::after{
+    top:80px;
+    width:23px;
+    height:52px;
+    background:var(--head);
+}
+.foots::before{
+    border-radius:0 0 5px 15px;
+    left:-30px;
+}
+
+.foots::after{
+    border-radius:0 0 15px 5px;
+    left:7px;
+}
+#walk:checked~.deer .body .foots::before{
+    transform-origin:left top;
+    transform:rotate(-10deg) rotateX(0);
+    animation:foot_r 1s ease-in-out infinite;
+}
+#walk:checked~.deer .body .foots::after{
+    transform-origin:right top;
+    transform:rotate(10deg) rotateX(0);
+    animation:foot_l 1s ease-in-out infinite;
+}
+@keyframes foot_r{
+    25%{
+        transform:rotate(-5deg) rotateX(30deg);
+        height:65px;
+    }50%{
+        transform:rotate(-10deg) rotateX(0);
+        height:52px;
+    }75%{
+        transform:rotate(-15deg) rotateX(-30deg);
+        height:52px;
+    }
+}
+@keyframes foot_l{
+    25%{
+        transform:rotate(15deg) rotateX(-30deg);
+        height:52px;
+    }50%{
+        transform:rotate(10deg) rotateX(0);
+        height:52px;
+    }75%{
+        transform:rotate(5deg) rotateX(30deg);
+        height:65px;
+    }
+}
