@@ -1,32 +1,32 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
     <link rel="stylesheet" href="deer.css">
+    <script type="text/javascript" defer="defer" src="deer.js"></script>
 </head>
 
 <body>
 <div class="container">
-    <input type="radio" id="stand" name="action">
-    <input type="radio" id="walk" name="action">
-    <input type="radio" id="left" name="action">
-    <input type="radio" id="right" name="action">
+    <button type="button" id="walk"></button>
+    <button type="button" id="left"></button>
+    <button type="button" id="right"></button>
 
-    <div class="deer">
-        <div class="head">
-            <p></p><p></p><p></p><p></p><p></p>
+    <div id="deer">
+        <div id="head">
+            <div id="ear"><p></p></div>
+            <div id="horn_left"><p></p></div>
+            <div id="horn_right"><p></p></div>
+            <div id="face"><p></p></div>
+            <div id="nose"><p></p><p></p></div>
         </div>
-        <div class=body>
-            <p class="stomoch"></p>
-            <p class="hands"></p>
-            <p class="foots"></p>
+        <div id=body>
+            <p id="main_body"></p>
+            <p id="stomoch"></p>
+            <div id="hands"><p></p><p></p></div>
+            <div id="foots"><p></p><p></p></div>
         </div>
-        <label for="stand"></label>
-    </div>
-
-    <div class="arrows">
-        <label class="arrow_down" for="walk"></label>
-        <label class="arrow_left" for="left"></label>
-        <label class="arrow_right" for=“right""></label>
+        <button id="stand"></label>
     </div>
 </div>
 </body>
+</html?

@@ -14,9 +14,7 @@ body{
     overflow:hidden;
     background:#f7f0e5;
 }
-.container *,
-.container *::before,
-.container *::after{
+.container *{
     display:block;
     position:absolute;
     content:"";
@@ -26,34 +24,40 @@ body{
 .container input{
     display:none;
 }
-.arrows{
+.container>button{
     display:block;
     width:0px;
     height:0px;
     top:50%;
     left:50%;
 }
-.arrow_down{
+#walk{
+    background:transparent;
     border-top:22px solid #b9c49f;
     border-left:22px solid transparent;
     border-right:22px solid transparent;
+    border-bottom:none;
     margin-top:140px;
     margin-left:-22px;
     cursor:pointer;
 }
-.arrow_left{
+#left{
+    background:transparent;
     border-right:22px solid #b9c49f;
     border-top:22px solid transparent;
     border-bottom:22px solid transparent;
+    border-left:none;
     margin-left:-132px;
 }
-.arrow_right{
+#right{
+    background:transparent;
     border-left:22px solid #b9c49f;
     border-top:22px solid transparent;
     border-bottom:22px solid transparent;
+    border-right:none;
     margin-left:110px;
 }
-.deer{
+#deer{
     --head:#ff8a74;
     --stomoch:#fee9c1;
     --eye:#66635e;
@@ -63,7 +67,7 @@ body{
     left:50%;
     margin:-125px -85px;
 }
-.deer label{
+#deer button{
     top:0;
     left:0;
     width:100%;
@@ -72,12 +76,12 @@ body{
     cursor:pointer;
     z-index:10;
 }
-.head{
+#head{
     top:21px;
     left:50%;
     z-index:1;
 }
-.head p:nth-child(4){
+#face{
     width:116px;
     height:100px;
     margin-left:-58px;
@@ -86,7 +90,7 @@ body{
     -webkit-box-shadow:0 0 0px 1px var(--stomoch) inset;
     box-shadow:0 0 0px 1px var(--stomoch) inset;
 }
-.head p:nth-child(4)::before{
+#face>p{
     width:138px;
     height:78px;
     background:var(--head);
@@ -95,7 +99,7 @@ body{
     left:50%;
     margin-left:-69px;
 }
-.head p:nth-child(5){
+#nose{
     width:24px;
     height:15px;
     background:var(--stomoch);
@@ -103,7 +107,7 @@ body{
     top:70px;
     margin-left:-12px;
 }
-.head p:nth-child(5)::before{
+#nose p:nth-child(1){
     width:12px;
     height:12px;
     border-radius:50%;
@@ -112,7 +116,7 @@ body{
     left:50%;
     margin-left:-45px;
 }
-.head p:nth-child(5)::after{
+#nose p:nth-child(2){
     width:12px;
     height:12px;
     border-radius:50%;
@@ -121,7 +125,7 @@ body{
     left:50%;
     margin-left:33px;
 }
-.head p:nth-child(1){
+#ear{
     width:50px;
     height:26px;
     border-radius:0 0 26px 26px;
@@ -129,14 +133,14 @@ body{
     margin-left:-83px;
     background:var(--head);
 }
-.head p:nth-child(1)::before{
+#ear>p{
     width:50px;
     height:26px;
     border-radius:0 0 26px 26px;
     margin-left:116px;
     background:var(--head);
 }
-.head p:nth-child(2){
+#horn_left{
     width:10px;
     height:45px;
     border-radius:5px/20px 20px 0 0;
@@ -146,7 +150,7 @@ body{
     -webkit-transform:rotate(-20deg);
     transform:rotate(-20deg);
 }
-.head p:nth-child(2)::before{
+#horn_left>p{
     width:20px;
     height:8px;
     border-radius:10px 0 0 10px/4px;
@@ -156,7 +160,7 @@ body{
     -webkit-transform:rotate(20deg);
     transform:rotate(20deg);
 }
-.head p:nth-child(3){
+#horn_right{
     width:10px;
     height:45px;
     border-radius:5px/20px 20px 0 0;
@@ -166,7 +170,7 @@ body{
     -webkit-transform:rotate(20deg);
     transform:rotate(20deg);
 }
-.head p:nth-child(3)::before{
+#horn_right>p{
     width:20px;
     height:8px;
     border-radius:0 10px 10px 0/4px;
@@ -176,19 +180,19 @@ body{
     -webkit-transform:rotate(-20deg);
     transform:rotate(-20deg);
 }
-.body{
+#body{
     top:120px;
     left:50%;
     transform:perspective(50px);
 }
-.body::before{
+#main_body{
     width:84px;
     height:110px;
     border-radius:50%;
     margin-left:-42px;
     background:var(--head);
 }
-.body .stomoch{
+#body #stomoch{
     width:44px;
     height:70px;
     border-radius:50%;
@@ -197,34 +201,33 @@ body{
     background:var(--stomoch);
     z-index:1;
 }
-.hands::before,
-.hands::after{
+#hands *{
     width:20px;
     height:70px;
     top:10px;
     background:var(--head);
     z-index:2;
 }
-.hands::before{
+#hands>p:nth-child(1){
     left:-35px;
     border-radius:10px 10px 20px 10px;
     transform-origin:top right;
     -webkit-transform:rotate(20deg);
     transform:rotate(20deg);
 }
-.hands::after{
+#hands>p:nth-child(2){
     left:15px;
     border-radius:10px 10px 10px 20px;
     transform-origin:top left;
     -webkit-transform:rotate(-20deg);
     transform:rotate(-20deg);
 }
-#walk:checked~.deer .body .hands::before{
+.walk_lh{
     transform:rotate(20deg) rotateX(0);
     height:70px;
     animation:hand_r 1s ease-in-out infinite;
 }
-#walk:checked~.deer .body .hands::after{
+.walk_rh{
     transform:rotate(-20deg) rotateX(0);
     height:70px;
     animation:hand_l 1s ease-in-out infinite;
@@ -253,28 +256,27 @@ body{
         height:70px;
     }
 }
-.foots::before,
-.foots::after{
+#foots *{
     top:80px;
     width:23px;
     height:52px;
     background:var(--head);
 }
-.foots::before{
+#foots>p:nth-child(1){
     border-radius:0 0 5px 15px;
     left:-30px;
 }
 
-.foots::after{
+#foots>p:nth-child(2){
     border-radius:0 0 15px 5px;
     left:7px;
 }
-#walk:checked~.deer .body .foots::before{
+.walk_lf{
     transform-origin:left top;
     transform:rotate(-10deg) rotateX(0);
     animation:foot_r 1s ease-in-out infinite;
 }
-#walk:checked~.deer .body .foots::after{
+.walk_rf{
     transform-origin:right top;
     transform:rotate(10deg) rotateX(0);
     animation:foot_l 1s ease-in-out infinite;
@@ -302,4 +304,8 @@ body{
         transform:rotate(5deg) rotateX(30deg);
         height:65px;
     }
+}
+#stand{
+    background:transparent;
+    border:none;
 }
