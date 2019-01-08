@@ -441,6 +441,7 @@ button::-moz-focus-inner{
 }
 #foots{
     z-index:0;
+    overflow:hidden;
 }
 #foots *{
     top:80px;
