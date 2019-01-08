@@ -449,6 +449,10 @@ button::-moz-focus-inner{
     width:23px;
     height:52px;
     background:var(--head);
+<<<<<<< HEAD
+=======
+    z-index:-1;
+>>>>>>> 87e8397d0161cef39ae5c4169d5d0d5d3e44b543
 }
 #foots>p:nth-child(1){
     border-radius:0 0 5px 15px;
