@@ -7,7 +7,6 @@ function rmvClass(e, a) {
     document.getElementById(e).classList.remove(cls);
 }
 function startWalk() {
-    console.log('added classes.');
     for(e in walkNodes) {
         addClass(walkNodes[e], 'walk');
     }
@@ -18,7 +17,6 @@ function stopWalk() {
         for(e in walkNodes) {
             rmvClass(walkNodes[e], 'walk');
         }
-        console.log("removed classes.");
         addClass('arrsdown', 'hover');
     }
 }
@@ -31,7 +29,6 @@ function startPress(direct) {
 function stopPress(direct) {
     if(document.getElementById('deer').classList.contains('press'+direct+'_deer')){
         for(e in pressNodes) {
-            console.log(pressNodes[e]);
             rmvClass(pressNodes[e], 'press'+direct);
         }
         rmvClass('arrs'+direct, 'hover');
@@ -41,14 +38,12 @@ function clearTimeoutID() {
     if(typeof timeoutID == "number") {
         window.clearTimeout(timeoutID);
         delete timeoutID;
-        console.log("deleted timeout");
     }
 }
 document.addEventListener('DOMContentLoaded', function(event) {
     walkNodes=new Array('lhand', 'rhand', 'lfoot', 'rfoot','arrdown1', 'arrdown2');
     pressNodes=new Array('deer','rhand','lhand','lfoot','rfoot','arrleft1','arrleft2','arrright1','arrright2');
     document.getElementById('walkbtn').onclick = function() {
-        console.log('clicked');
         stopPress('left');
         stopPress('right');
         clearTimeoutID();

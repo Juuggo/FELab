@@ -14,18 +14,21 @@ body{
     overflow:hidden;
     background:#f7f0e5;
 }
-.container *{
+.container *,
+.container *::before,
+.container *::after{
     display:block;
     position:absolute;
     content:"";
-    -webkit-transition:all .3s linear;
-    transition:all .3s linear;
 }
-.container button {
+.container button{
     background:transparent;
     border:none;
     outline:none;
     cursor:pointer;
+}
+button::-moz-focus-inner{
+    border:none;
 }
 #arrsdown{
     display:block;
@@ -34,17 +37,18 @@ body{
     margin-top:140px;
     margin-left:-22px;
 }
-.hover_arrsdown:hover{
-    animation: bounce_down 1s ease infinite;
-}
 @keyframes bounce_down{
     0%, 50%, 100%{
+        -webkit-transform:translateY(0);
         transform:translateY(0);
     }20%, 80%{
+        -webkit-transform:translateY(-5px);
         transform:translateY(-5px);
     }40%{
+        -webkit-transform:translateY(10px);
         transform:translateY(10px);
     }60%{
+        -webkit-transform:translateY(8px);
         transform:translateY(8px);
     }
 }
@@ -53,8 +57,6 @@ body{
 }
 #arrdown1::before, #arrdown1::after,
 #arrdown2::before, #arrdown2::after{
-    content:"";
-    position:absolute;
     border-top:22px solid #b9c49f;
     border-left:22px solid transparent;
     border-right:22px solid transparent;
@@ -67,15 +69,18 @@ body{
     border-top:22px solid #f7f0e5;
 }
 .walk_arrdown2{
+    -webkit-animation:arrow_scrolldown .5s linear infinite;
     animation:arrow_scrolldown .5s linear infinite;
 }
 .walk_arrdown1{
     top:0px;
+    -webkit-animation:arrow_scrolldown .5s .25s linear infinite;
     animation:arrow_scrolldown .5s .25s linear infinite;
 }
 @keyframes arrow_scrolldown {
     0%{
         opacity:0;
+        -webkit-transform:translateY(0px);
         transform:translateY(0px);
     }15%{
         opacity:1;
@@ -106,9 +111,6 @@ body{
     margin-left:-112px;
     cursor:pointer;
 }
-.hover_arrsleft:hover{
-    animation: bounce_left 1s ease infinite;
-}
 @keyframes bounce_left{
     0%, 50%, 100%{
         transform:translateX(0);
@@ -125,8 +127,6 @@ body{
 }
 #arrleft1::before, #arrleft1::after,
 #arrleft2::before, #arrleft2::after{
-    content:"";
-    position:absolute;
     border-right:22px solid #b9c49f;
     border-top:22px solid transparent;
     border-bottom:22px solid transparent;
@@ -139,24 +139,30 @@ body{
     border-right:22px solid #f7f0e5;
 }
 .pressleft_arrleft2{
+    -webkit-animation:arrow_scrollleft .5s linear 1;
     animation:arrow_scrollleft .5s linear 1;
 }
 .pressleft_arrleft1{
     top:0px;
+    -webkit-animation:arrow_scrollleft .5s .25s linear 1;
     animation:arrow_scrollleft .5s .25s linear 1;
 }
 @keyframes arrow_scrollleft {
     0%{
         opacity:0;
+        -webkit-transform:translateX(0px);
         transform:translateX(0px);
     }15%{
         opacity:1;
+        -webkit-transform:translateX(0px);
         transform:translateX(0px);
     }85%{
         opacity:1;
+        -webkit-transform:translateX(-12px);
         transform:translateX(-12px);
     }100%{
         opacity:0;
+        -webkit-transform:translateX(-12px);
         transform:translateX(-12px);
     }
 }
@@ -173,17 +179,18 @@ body{
     left:-12px;
     margin-top:-5px;
 }
-.hover_arrsright:hover{
-    animation: bounce_right 1s ease infinite;
-}
 @keyframes bounce_right{
     0%, 50%, 100%{
+        -webkit-transform:translateX(0);
         transform:translateX(0);
     }20%, 80%{
+        -webkit-transform:translatex(-5px);
         transform:translatex(-5px);
     }40%{
+        -webkit-transform:translateX(10px);
         transform:translateX(10px);
     }60%{
+        -webkit-transform:translateX(8px);
         transform:translateX(8px);
     }
 }
@@ -192,8 +199,6 @@ body{
 }
 #arrright1::before, #arrright1::after,
 #arrright2::before, #arrright2::after{
-    content:"";
-    position:absolute;
     border-left:22px solid #b9c49f;
     border-top:22px solid transparent;
     border-bottom:22px solid transparent;
@@ -206,24 +211,30 @@ body{
     border-left:22px solid #f7f0e5;
 }
 .pressright_arrright2{
+    -webkit-animation:arrow_scrollright .5s linear 1;
     animation:arrow_scrollright .5s linear 1;
 }
 .pressright_arrright1{
     top:0px;
+    -webkit-animation:arrow_scrollright .5s .25s linear 1;
     animation:arrow_scrollright .5s .25s linear 1;
 }
 @keyframes arrow_scrollright {
     0%{
         opacity:0;
+        -webkit-transform:translateX(0px);
         transform:translateX(0px);
     }15%{
         opacity:1;
+        -webkit-transform:translateX(0px);
         transform:translateX(0px);
     }85%{
         opacity:1;
+        -webkit-transform:translateX(12px);
         transform:translateX(12px);
     }100%{
         opacity:0;
+        -webkit-transform:translateX(12px);
         transform:translateX(12px);
     }
 }
@@ -344,6 +355,7 @@ body{
 #body{
     top:120px;
     left:50%;
+    -webkit-transform:perspective(50px);
     transform:perspective(50px);
 }
 #main_body{
@@ -372,6 +384,7 @@ body{
 #hands>p:nth-child(1){
     left:-35px;
     border-radius:10px 10px 20px 10px;
+    -webkit-transform-origin:top right;
     transform-origin:top right;
     -webkit-transform:rotate(20deg);
     transform:rotate(20deg);
@@ -379,40 +392,51 @@ body{
 #hands>p:nth-child(2){
     left:15px;
     border-radius:10px 10px 10px 20px;
+    -webkit-transform-origin:top left;
     transform-origin:top left;
     -webkit-transform:rotate(-20deg);
     transform:rotate(-20deg);
 }
 .walk_rhand{
+    -webkit-transform:rotate(20deg) rotateX(0);
     transform:rotate(20deg) rotateX(0);
     height:70px;
+    -webkit-animation:hand_r 1s ease-in-out infinite;
     animation:hand_r 1s ease-in-out infinite;
 }
 .walk_lhand{
+    -webkit-transform:rotate(-20deg) rotateX(0);
     transform:rotate(-20deg) rotateX(0);
     height:70px;
+    -webkit-animation:hand_l 1s ease-in-out infinite;
     animation:hand_l 1s ease-in-out infinite;
 }
 @keyframes hand_r{
     25%{
+        -webkit-transform:rotate(30deg) rotateX(-30deg);
         transform:rotate(30deg) rotateX(-30deg);
         height:70px;
     }50%{
+        -webkit-transform:rotate(20deg) rotateX(0);
         transform:rotate(20deg) rotateX(0);
         height:70px;
     }75%{
+        -webkit-transform:rotate(3deg) rotateX(30deg);
         transform:rotate(3deg) rotateX(30deg);
         height:80px;
     }
 }
 @keyframes hand_l{
     25%{
+        -webkit-transform:rotate(-3deg) rotateX(30deg);
         transform:rotate(-3deg) rotateX(30deg);
         height:80px;
     }50%{
+        -webkit-transform:rotate(-20deg) rotateX(0);
         transform:rotate(-20deg) rotateX(0);
         height:70px;
     }75%{
+        -webkit-transform:rotate(-30deg) rotateX(-30deg);
         transform:rotate(-30deg) rotateX(-30deg);
         height:70px;
     }
@@ -434,61 +458,81 @@ body{
     left:7px;
 }
 .walk_rfoot{
+    -webkit-transform-origin:left top;
     transform-origin:left top;
-    transform:rotate(0deg) rotateX(0);
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+    -webkit-animation:foot_r 1s ease-in-out infinite;
     animation:foot_r 1s ease-in-out infinite;
 }
 .walk_lfoot{
+    -webkit-transform-origin:right top;
     transform-origin:right top;
-    transform:rotate(0deg) rotateX(0);
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+    -webkit-animation:foot_l 1s ease-in-out infinite;
     animation:foot_l 1s ease-in-out infinite;
 }
 @keyframes foot_r{
     0%{
-        transform:rotate(-10deg) rotateX(0);
+        -webkit-transform:rotate(-10deg);
+        transform:rotate(-10deg);
         height:52px;
     }25%{
-        transform:rotate(-5deg) rotateX(30deg);
+        -webkit-transform:rotate(-5deg);
+        transform:rotate(-5deg);
         height:65px;
     }50%{
-        transform:rotate(-10deg) rotateX(0);
+        -webkit-transform:rotate(-10deg);
+        transform:rotate(-10deg);
         height:52px;
     }75%{
-        transform:rotate(-15deg) rotateX(-30deg);
+        -webkit-transform:rotate(-15deg);
+        transform:rotate(-15deg);
         height:52px;
     }100%{
-        transform:rotate(-10deg) rotateX(0);
+        -webkit-transform:rotate(-10deg);
+        transform:rotate(-10deg);
         height:52px;
     }
 }
 @keyframes foot_l{
     0%{
-        transform:rotate(10deg) rotateX(0);
+        -webkit-transform:rotate(10deg);
+        transform:rotate(10deg);
         height:52px;
     }25%{
-        transform:rotate(15deg) rotateX(-30deg);
+        -webkit-transform:rotate(15deg);
+        transform:rotate(15deg);
         height:52px;
     }50%{
-        transform:rotate(10deg) rotateX(0);
+        -webkit-transform:rotate(10deg);
+        transform:rotate(10deg);
         height:52px;
     }75%{
-        transform:rotate(5deg) rotateX(30deg);
+        -webkit-transform:rotate(5deg);
+        transform:rotate(5deg);
         height:65px;
     }100%{
-        transform:rotate(10deg) rotateX(0);
+        -webkit-transform:rotate(10deg);
+        transform:rotate(10deg);
         height:52px;
     }
 }
 .pressleft_deer{
+    -webkit-transform-origin:67px 200px;
     transform-origin:67px 200px;
+    -webkit-animation:deer_lp .7s ease-out 1;
     animation:deer_lp .7s ease-out 1;
 }
 @keyframes deer_lp{
     50%{
+        -webkit-transform:rotate(-15deg); 
         transform:rotate(-15deg); 
     }
 }
 .pressleft_rhand{
+    -webkit-animation:rhand_lp .7s ease-out 1;
     animation:rhand_lp .7s ease-out 1;
 }
 @keyframes rhand_lp{
@@ -497,21 +541,26 @@ body{
         height:50px;
     }
     50%{
+        -webkit-transform:rotate(100deg); 
         transform:rotate(100deg); 
         top:30px;
         height:75px;
     }
 }
 .pressleft_rfoot{
+    -webkit-transform-origin:center top;
     transform-origin:center top;
+    -webkit-animation:footr_lp .7s ease-out 1;
     animation:footr_lp .7s ease-out 1;
 }
 @keyframes footr_lp{
     50%{
+        -webkit-transform:rotate(15deg); 
         transform:rotate(15deg); 
     }
 }
 .pressleft_lfoot{
+    -webkit-animation:footl_lp .7s linear 1;
     animation:footl_lp .7s linear 1;
 }
 @keyframes footl_lp{
@@ -520,15 +569,19 @@ body{
     }
 }
 .pressright_deer{
+    -webkit-transform-origin:103px 200px;
     transform-origin:103px 200px;
+    -webkit-animation:deer_rp .7s ease-out 1;
     animation:deer_rp .7s ease-out 1;
 }
 @keyframes deer_rp{
     50%{
+        -webkit-transform:rotate(15deg); 
         transform:rotate(15deg); 
     }
 }
 .pressright_lhand{
+    -webkit-animation:lhand_rp .7s ease-out 1;
     animation:lhand_rp .7s ease-out 1;
 }
 @keyframes lhand_rp{
@@ -537,25 +590,44 @@ body{
         height:50px;
     }
     50%{
+        -webkit-transform:rotate(-100deg); 
         transform:rotate(-100deg); 
         top:30px;
         height:75px;
     }
 }
 .pressright_lfoot{
+    -webkit-transform-origin:center top;
     transform-origin:center top;
+    -webkit-animation:footl_rp .7s ease-out 1;
     animation:footl_rp .7s ease-out 1;
 }
 @keyframes footl_rp{
     50%{
+        -webkit-transform:rotate(-15deg); 
         transform:rotate(-15deg); 
     }
 }
 .pressright_rfoot{
+    -webkit-animation:footr_rp .7s linear 1;
     animation:footr_rp .7s linear 1;
 }
 @keyframes footr_rp{
     50%{
         height:62px;
+    }
+}
+@media not handheld {
+    .hover_arrsdown:hover{
+        -webkit-animation: bounce_down 1s ease infinite;
+        animation: bounce_down 1s ease infinite;
+    }
+    .hover_arrsleft:hover{
+        -webkit-animation: bounce_left 1s ease infinite;
+        animation: bounce_left 1s ease infinite;
+    }
+    .hover_arrsright:hover{
+        -webkit-animation: bounce_right 1s ease infinite;
+        animation: bounce_right 1s ease infinite;
     }
 }
