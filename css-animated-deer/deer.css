@@ -441,22 +441,25 @@ button::-moz-focus-inner{
 }
 #foots{
     z-index:0;
+    top:80px;
+    width:100px;
+    height:70px;
     overflow:hidden;
+    margin-left:-50px;
 }
 #foots *{
-    top:80px;
     width:23px;
     height:52px;
     background:var(--head);
 }
 #foots>p:nth-child(1){
     border-radius:0 0 5px 15px;
-    left:-30px;
+    left:20px;
 }
 
 #foots>p:nth-child(2){
     border-radius:0 0 15px 5px;
-    left:7px;
+    left:57px;
 }
 .walk_rfoot{
     -webkit-transform-origin:left top;
