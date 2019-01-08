@@ -396,47 +396,47 @@ button::-moz-focus-inner{
     transform:rotate(-20deg);
 }
 .walk_rhand{
-    -webkit-transform:rotate(20deg) rotateX(0);
-    transform:rotate(20deg) rotateX(0);
+    -webkit-transform:rotate(20deg);
+    transform:rotate(20deg);
     height:70px;
     -webkit-animation:hand_r 1s ease-in-out infinite;
     animation:hand_r 1s ease-in-out infinite;
 }
 .walk_lhand{
-    -webkit-transform:rotate(-20deg) rotateX(0);
-    transform:rotate(-20deg) rotateX(0);
+    -webkit-transform:rotate(-20deg);
+    transform:rotate(-20deg);
     height:70px;
     -webkit-animation:hand_l 1s ease-in-out infinite;
     animation:hand_l 1s ease-in-out infinite;
 }
 @keyframes hand_r{
     25%{
-        -webkit-transform:rotate(30deg) rotateX(-30deg);
-        transform:rotate(30deg) rotateX(-30deg);
-        height:70px;
+        -webkit-transform:rotate(30deg);
+        transform:rotate(30deg);
+        height:60px;
     }50%{
-        -webkit-transform:rotate(20deg) rotateX(0);
-        transform:rotate(20deg) rotateX(0);
+        -webkit-transform:rotate(20deg);
+        transform:rotate(20deg);
         height:70px;
     }75%{
-        -webkit-transform:rotate(3deg) rotateX(30deg);
-        transform:rotate(3deg) rotateX(30deg);
-        height:80px;
+        -webkit-transform:rotate(3deg);
+        transform:rotate(3deg);
+        height:60px;
     }
 }
 @keyframes hand_l{
     25%{
-        -webkit-transform:rotate(-3deg) rotateX(30deg);
-        transform:rotate(-3deg) rotateX(30deg);
-        height:80px;
+        -webkit-transform:rotate(-3deg);
+        transform:rotate(-3deg);
+        height:60px;
     }50%{
-        -webkit-transform:rotate(-20deg) rotateX(0);
-        transform:rotate(-20deg) rotateX(0);
+        -webkit-transform:rotate(-20deg);
+        transform:rotate(-20deg);
         height:70px;
     }75%{
-        -webkit-transform:rotate(-30deg) rotateX(-30deg);
-        transform:rotate(-30deg) rotateX(-30deg);
-        height:70px;
+        -webkit-transform:rotate(-30deg);
+        transform:rotate(-30deg);
+        height:60px;
     }
 }
 #foots{
