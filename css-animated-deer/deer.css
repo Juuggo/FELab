@@ -446,7 +446,7 @@ button::-moz-focus-inner{
     width:23px;
     height:52px;
     background:var(--head);
-    z-index:0;
+    z-index:-1;
 }
 #foots>p:nth-child(1){
     border-radius:0 0 5px 15px;
@@ -617,17 +617,15 @@ button::-moz-focus-inner{
         height:62px;
     }
 }
-@media not handheld {
-    .hover_arrsdown:hover{
-        -webkit-animation: bounce_down 1s ease infinite;
-        animation: bounce_down 1s ease infinite;
-    }
-    .hover_arrsleft:hover{
-        -webkit-animation: bounce_left 1s ease infinite;
-        animation: bounce_left 1s ease infinite;
-    }
-    .hover_arrsright:hover{
-        -webkit-animation: bounce_right 1s ease infinite;
-        animation: bounce_right 1s ease infinite;
-    }
+.hover_arrsdown:hover{
+    -webkit-animation: bounce_down 1s ease infinite;
+    animation: bounce_down 1s ease infinite;
+}
+.hover_arrsleft:hover{
+    -webkit-animation: bounce_left 1s ease infinite;
+    animation: bounce_left 1s ease infinite;
+}
+.hover_arrsright:hover{
+    -webkit-animation: bounce_right 1s ease infinite;
+    animation: bounce_right 1s ease infinite;
 }
