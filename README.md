@@ -1,3 +1,2 @@
 # FELab
-## Catalog
-* [CSS Animation Deer](CSS_deer/deer.html)
+A place to keep Front End demos and some experimental things.
