@@ -24,14 +24,12 @@ function startPress(direct) {
     for(e in pressNodes) {
         addClass(pressNodes[e], 'press'+direct);
     }
-    addClass('arrs'+direct, 'hover');
 }
 function stopPress(direct) {
     if(document.getElementById('deer').classList.contains('press'+direct+'_deer')){
         for(e in pressNodes) {
             rmvClass(pressNodes[e], 'press'+direct);
         }
-        rmvClass('arrs'+direct, 'hover');
     }
 }
 function clearTimeoutID() {
