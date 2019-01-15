@@ -1,0 +1,33 @@
+html,
+body{
+    width:100%;
+    height:100%;
+}
+*{
+    margin:0;
+    padding:0;
+}
+.fullscreen-container{
+    overflow:hidden;
+    width:100%;
+    height:100%;
+}
+#all-pages{
+    position:relative;
+    top:0;
+    transition: all 1000ms ease;
+    /* height set by js */
+}
+.page{
+    height:100%;
+    width:100%;
+}
+#all-pages .page:nth-child(1){
+    background: #e8d934;
+}
+#all-pages .page:nth-child(2){
+    background: #f0a090;
+}
+#all-pages .page:nth-child(3){
+    background: #a8c34f;
+}
