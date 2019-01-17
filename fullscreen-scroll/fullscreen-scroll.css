@@ -43,8 +43,13 @@ body{
     text-align:center;
     position:relative;
     top:50%;
-    transform:translateY(-50%);
     margin:0 40px;
+    opacity:0;
+    transform:translateY(-50%);
+    transition:all 3s ease;
+}
+.text-container.in-sight{
+    opacity:1;
 }
 .text-container h2{
     font-size:6vh;

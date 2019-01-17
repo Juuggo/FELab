@@ -48,6 +48,7 @@ class ScrollPages {
             this.pages.style.top = (-this.viewHeight * this.currentPageNumber) + 'px';
             this.currentPageNumber++;
             this.updateNav();
+            this.textFadeInOut();
         }
     }
     scrollUp() {
@@ -55,6 +56,7 @@ class ScrollPages {
             this.pages.style.top = (-this.viewHeight * (this.currentPageNumber - 2)) + 'px';
             this.currentPageNumber--;
             this.updateNav();
+            this.textFadeInOut();
         }
     }
     scrollTo(targetPageNumber) {
@@ -73,7 +75,6 @@ class ScrollPages {
         for(let i=0; i < this.totalPageNumber; i++) {
             pageNav.innerHTML += '<p class="nav-dot"><span></span></p>';
         }
-        // const navDots = document.querySelectorAll('.nav-dot');
         const navDots = document.getElementsByClassName('nav-dot');
         this.navDots = Array.prototype.slice.call(navDots);
         this.navDots[0].classList.add('dot-active');
@@ -98,11 +99,21 @@ class ScrollPages {
         this.pages.style.height = this.viewHeight + 'px';
         this.pages.style.top = -this.viewHeight * (this.currentPageNumber-1) + 'px';
     }
+    textFadeInOut() {
+        const containersDom = document.getElementsByClassName('text-container');
+        let textContainers = Array.prototype.slice.call(containersDom);
+        textContainers.forEach((e) => {
+            e.classList.remove('in-sight');
+        });
+        let textContainerInSight = textContainers[this.currentPageNumber-1];
+        textContainerInSight.classList.add('in-sight')
+    }
     init() {
         let handleMouseWheel = helper.throttle(this.mouseScroll, 500, this);
         let handleResize = helper.debounce(this.resize, 500, this);
         this.pages.style.height = this.viewHeight + 'px';
         this.createNav();
+        this.textFadeInOut();
         if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
             document.addEventListener('wheel', handleMouseWheel);
         } else {
