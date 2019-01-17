@@ -15,7 +15,7 @@ body{
 #all-pages{
     position:relative;
     top:0;
-    transition: all 1000ms ease;
+    transition:all 800ms ease;
     /* height set by js */
 }
 .page{
@@ -23,13 +23,36 @@ body{
     width:100%;
 }
 #all-pages .page:nth-child(1){
-    background: #e8d934;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+               url(images/bg1.jpg)
+               center / cover;
 }
 #all-pages .page:nth-child(2){
-    background: #f0a090;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+               url(images/bg2.jpg)
+               center / cover;
 }
 #all-pages .page:nth-child(3){
-    background: #a8c34f;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+               url(images/bg3.jpg)
+               center / cover;
+}
+.text-container{
+    font-family: sans-serif, helvetica, arial;
+    color:white;
+    text-align:center;
+    position:relative;
+    top:50%;
+    transform:translateY(-50%);
+    margin:0 40px;
+}
+.text-container h2{
+    font-size:6vh;
+    text-transform:uppercase;
+}
+.text-container p{
+    font-size:2vh;
+    padding:1em 0;
 }
 .nav-dot-container{
     position:fixed;

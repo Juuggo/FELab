@@ -21,7 +21,7 @@ const helper = {
     debounce(method, delay, context) {
         let inDebounce;
         return function() {
-            clearTimeOut(method.inDebounce);
+            clearTimeout(method.inDebounce);
             inDebounce = setTimeout(() => {
                 method.apply(context, arguments);
             }, delay);
@@ -35,7 +35,6 @@ class ScrollPages {
         this.pages = pages;
         this.viewHeight = document.documentElement.clientHeight;
     }
-
     mouseScroll(event) {
         let delta = helper.getDelta(event);
         if (delta < 0) {
@@ -94,8 +93,14 @@ class ScrollPages {
         });
         this.navDots[this.currentPageNumber-1].classList.add('dot-active');
     }
+    resize() {
+        this.viewHeight = document.documentElement.clientHeight;
+        this.pages.style.height = this.viewHeight + 'px';
+        this.pages.style.top = -this.viewHeight * (this.currentPageNumber-1) + 'px';
+    }
     init() {
         let handleMouseWheel = helper.throttle(this.mouseScroll, 500, this);
+        let handleResize = helper.debounce(this.resize, 500, this);
         this.pages.style.height = this.viewHeight + 'px';
         this.createNav();
         if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
@@ -105,7 +110,7 @@ class ScrollPages {
         }
         document.addEventListener('touchstart', (event) => {
             this.startY = event.touches[0].pageY;
-        })
+        });
         document.addEventListener('touchend', (event) => {
             let endY = event.changedTouches[0].pageY;
             if (this.startY - endY < 0) {
@@ -114,10 +119,11 @@ class ScrollPages {
             if (this.startY - endY > 0) {
                 this.scrollDown();
             }
-        })
+        });
         document.addEventListener('touchmove', (event) => {
             event.preventDefault();
-        })
+        });
+        window.addEventListener('resize', handleResize);
     }
 }
 
