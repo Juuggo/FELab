@@ -6,6 +6,27 @@ const helper = {
             return -event.detail;
         }
     },
+    throttle(method, delay, context) {
+        let inThrottle = false;
+        return function() {
+            if (!inThrottle) {
+                inThrottle = true;
+                method.apply(context, arguments);
+                setTimeout(() => {
+                    inThrottle = false;
+                }, delay);
+            }
+        }
+    },
+    debounce(method, delay, context) {
+        let inDebounce;
+        return function() {
+            clearTimeOut(method.inDebounce);
+            inDebounce = setTimeout(() => {
+                method.apply(context, arguments);
+            }, delay);
+        }
+    }
 }
 class ScrollPages {
     constructor(currentPageNumber, totalPageNumber, pages){
@@ -16,8 +37,6 @@ class ScrollPages {
     }
 
     mouseScroll(event) {
-        console.log(this);
-        console.log(event);
         let delta = helper.getDelta(event);
         if (delta < 0) {
             this.scrollDown();
@@ -28,24 +47,77 @@ class ScrollPages {
     scrollDown() {
         if (this.currentPageNumber !== this.totalPageNumber){
             this.pages.style.top = (-this.viewHeight * this.currentPageNumber) + 'px';
-            console.log(this.pages.style.top);
             this.currentPageNumber++;
+            this.updateNav();
         }
     }
     scrollUp() {
         if (this.currentPageNumber !== 1) {
             this.pages.style.top = (-this.viewHeight * (this.currentPageNumber - 2)) + 'px';
-            console.log(this.pages.style.top);
             this.currentPageNumber--;
+            this.updateNav();
         }
     }
-    init() {
-        this.pages.style.height = this.viewHeight + 'px';
-        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
-            document.addEventListener('wheel', this.mouseScroll.bind(this));
-        } else {
-            document.addEventListener('DOMMouseScroll', this.mouseScroll.bind(this));
+    scrollTo(targetPageNumber) {
+        while (this.currentPageNumber !== targetPageNumber) {
+            if (this.currentPageNumber > targetPageNumber) {
+                this.scrollUp();
+            } else {
+                this.scrollDown();
+            }
         }
+    }
+    createNav() {
+        const pageNav = document.createElement('div');
+        pageNav.className = 'nav-dot-container';
+        this.pages.appendChild(pageNav);
+        for(let i=0; i < this.totalPageNumber; i++) {
+            pageNav.innerHTML += '<p class="nav-dot"><span></span></p>';
+        }
+        // const navDots = document.querySelectorAll('.nav-dot');
+        const navDots = document.getElementsByClassName('nav-dot');
+        this.navDots = Array.prototype.slice.call(navDots);
+        this.navDots[0].classList.add('dot-active');
+        this.navDots.forEach((e, index) => {
+            e.addEventListener('click', event => {
+                this.scrollTo(index+1);
+                this.navDots.forEach(e => {
+                    e.classList.remove('dot-active');
+                });
+                e.classList.add('dot-active');
+            });
+        });
+    }
+    updateNav() {
+        this.navDots.forEach(e => {
+            e.classList.remove('dot-active');
+        });
+        this.navDots[this.currentPageNumber-1].classList.add('dot-active');
+    }
+    init() {
+        let handleMouseWheel = helper.throttle(this.mouseScroll, 500, this);
+        this.pages.style.height = this.viewHeight + 'px';
+        this.createNav();
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
+            document.addEventListener('wheel', handleMouseWheel);
+        } else {
+            document.addEventListener('DOMMouseScroll', handleMouseWheel);
+        }
+        document.addEventListener('touchstart', (event) => {
+            this.startY = event.touches[0].pageY;
+        })
+        document.addEventListener('touchend', (event) => {
+            let endY = event.changedTouches[0].pageY;
+            if (this.startY - endY < 0) {
+                this.scrollUp();
+            }
+            if (this.startY - endY > 0) {
+                this.scrollDown();
+            }
+        })
+        document.addEventListener('touchmove', (event) => {
+            event.preventDefault();
+        })
     }
 }
 
